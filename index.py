@@ -7,6 +7,10 @@ from models.base import db
 from flask_migrate import Migrate, upgrade
 import random
 from prometheus_flask_exporter.multiprocess import GunicornPrometheusMetrics
+from dotenv import load_dotenv
+
+# Carregar variáveis do .env
+load_dotenv()
 
 app = Flask(__name__,
             static_url_path='',
@@ -255,5 +259,5 @@ def index():
     return render_template('index.html', products=products)
 
 if __name__ == '__main__':
-    #apply_migrations()
+    # apply_migrations()
     app.run(host='0.0.0.0', port=5000, debug=True)
